@@ -1,0 +1,21 @@
+[project]
+name = "research-assistant-langgraph"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "langchain-community>=0.3.26",
+    "langchain-core>=0.3.66",
+    "langchain-openai>=0.3.24",
+    "langgraph>=0.4.8",
+    "langgraph-checkpoint-sqlite>=2.0.10",
+    "langgraph-cli[inmem]>=0.3.3",
+    "langgraph-prebuilt>=0.2.2",
+    "langgraph-sdk>=0.1.70",
+    "langsmith>=0.4.1",
+    "notebook>=7.4.3",
+    "tavily-python>=0.7.7",
+    "trustcall>=0.0.26",
+    "wikipedia>=1.4.0",
+]
