@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+langchain>=0.1.0,<0.2.0
+langgraph>=0.0.30
+langchain-openai
+langchain-community # For TavilySearchResults, WikipediaLoader
+pydantic
+python-dotenv
+wikipedia
+tiktoken # Often a dependency for langchain/openai
+typing_extensions # For Annotated
