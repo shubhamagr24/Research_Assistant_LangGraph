@@ -1,0 +1,17 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY ./app/api /app/api
+COPY requirements_api.txt .env .env # Copy .env if you want to bake it (not recommended for production keys)
+# It's better to supply .env file at runtime or use Docker secrets/env vars
+
+RUN pip install --no-cache-dir -r requirements_api.txt
+
+# Ensure API keys are available (either from .env copied or passed at runtime)
+# COPY .env .env 
+# If .env is not copied, ensure OPENAI_API_KEY and TAVILY_API_KEY are set in docker-compose.yml
+
+EXPOSE 8000
+
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
