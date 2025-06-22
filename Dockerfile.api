@@ -1,17 +1,22 @@
-FROM python:3.10-slim
+FROM python:3.12-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY ./app/api /app/api
-COPY requirements_api.txt .env .env # Copy .env if you want to bake it (not recommended for production keys)
-# It's better to supply .env file at runtime or use Docker secrets/env vars
+# Copy only requirements first to leverage Docker cache
+COPY requirements_api.txt ./
 
+# Install dependencies early to avoid reinstallation on code changes
 RUN pip install --no-cache-dir -r requirements_api.txt
 
-# Ensure API keys are available (either from .env copied or passed at runtime)
-# COPY .env .env 
-# If .env is not copied, ensure OPENAI_API_KEY and TAVILY_API_KEY are set in docker-compose.yml
+# Copy application code
+COPY ./app /app/app
 
+# Optional: copy .env file (not recommended for production)
+# COPY .env .env
+
+# Ports and runtime
 EXPOSE 8000
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Start FastAPI server using Uvicorn
+CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

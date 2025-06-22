@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_community.tools import TavilySearchResults
 
+
+
 load_dotenv()
 
 max_interview_turns = 5   # Maximum number of turns in an interview
@@ -19,10 +21,11 @@ if not TAVILY_API_KEY:
 llm = ChatOpenAI(
     model="gpt-4o",
     temperature=0.0,
-    api_key=OPENAI_API_KEY
+    api_key=OPENAI_API_KEY,
+    max_retries=5
 )
 
-tavily_search = TavilySearchResults(max_results=3, api_key=TAVILY_API_KEY)
+tavily_search = TavilySearchResults(max_results=3, tavily_api_key=TAVILY_API_KEY)
 
 # Analyst generation instructions (from notebook cell b15d295c)
 analyst_instructions_template="""You are tasked with creating a set of AI analyst personas. Follow these instructions carefully:

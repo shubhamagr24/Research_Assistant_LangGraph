@@ -1,2 +1,34 @@
-streamlit
-requests
+# Streamlit Core
+streamlit==1.46.0
+
+# HTTP Client for calling API
+requests==2.32.4
+
+# Common Dependencies (often pulled by Streamlit or Requests)
+typing-extensions==4.14.0
+packaging==24.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+attrs==25.3.0
+blinker==1.9.0 # Streamlit dependency
+cachetools==6.1.0 # Streamlit dependency
+certifi==2025.6.15 # requests dependency
+charset-normalizer==3.4.2 # requests dependency
+click==8.2.1 # Streamlit dependency
+idna==3.10 # requests dependency
+jinja2==3.1.6 # Streamlit dependency
+markupsafe==3.0.2 # Jinja2 dependency
+numpy==2.3.0 # Streamlit dependency
+pandas==2.3.0 # Streamlit dependency
+pillow==11.2.1 # Streamlit dependency
+protobuf==6.31.1 # Streamlit dependency (check version compatibility)
+pyarrow==20.0.0 # Streamlit dependency
+pydeck==0.9.1 # Streamlit dependency (for map layers, if used)
+pytz==2025.2 # pandas dependency
+toml==0.10.2 # Streamlit dependency for config
+tornado==6.5.1 # Streamlit dependency
+tzdata==2025.2 # pandas dependency
+urllib3==2.5.0 # requests dependency
+
+# Optional: Visualization (if you plan to use them in Streamlit)
+altair==5.5.0

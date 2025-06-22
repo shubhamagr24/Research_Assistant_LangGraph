@@ -1,5 +1,5 @@
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, get_buffer_string
-from langchain.document_loaders import WikipediaLoader
+from langchain_community.document_loaders import WikipediaLoader
 from .schemas import GenerateAnalystsState, Perspectives, InterviewState, SearchQuery, Analyst, ResearchGraphState
 from app.api.core.config import (
     llm, tavily_search,max_interview_turns,
@@ -25,7 +25,7 @@ def human_feedback_node(state: GenerateAnalystsState) -> dict:
     return {} # No changes to state from this node itself
 
 def should_continue_analyst_generation(state: GenerateAnalystsState) -> str:
-    if state.get('human_analyst_feedback', None):
+    if state.get('human_analyst_feedback'):
         # If human feedback is provided, we want to regenerate analysts
         return "create_analysts"
     return "END"

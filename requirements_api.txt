@@ -1,11 +1,102 @@
-fastapi
-uvicorn[standard]
-langchain>=0.1.0,<0.2.0
-langgraph>=0.0.30
-langchain-openai
-langchain-community # For TavilySearchResults, WikipediaLoader
-pydantic
-python-dotenv
-wikipedia
-tiktoken # Often a dependency for langchain/openai
-typing_extensions # For Annotated
+# FastAPI and ASGI Server
+fastapi==0.115.13
+uvicorn==0.34.3 # Consider uvicorn[standard] for more features like watchfiles
+starlette==0.46.2 # FastAPI dependency
+h11==0.16.0 # Uvicorn dependency
+watchfiles==1.1.0 # For --reload, often part of uvicorn[standard]
+
+# Pydantic (Data validation and settings)
+pydantic==2.11.7
+pydantic-core==2.33.2
+pydantic-settings==2.9.1
+annotated-types==0.7.0
+jiter==0.10.0 # Pydantic v2 performance extension
+
+# Langchain Core Suite
+langchain==0.3.26
+langchain-core==0.3.66
+langchain-community==0.3.26
+langchain-openai==0.3.24
+langchain-text-splitters==0.3.8
+
+langchain-tavily
+
+# Langgraph Suite
+langgraph==0.4.8
+langgraph-api==0.2.61
+langgraph-checkpoint==2.1.0
+langgraph-checkpoint-sqlite==2.0.10 # For SqliteSaver
+langgraph-runtime-inmem==0.3.0 # For MemorySaver (used in the example)
+langgraph-prebuilt==0.2.2
+# langgraph-cli==0.3.3 # Primarily a CLI tool, not runtime API usually
+
+# Langsmith (Observability)
+langsmith==0.4.1
+requests-toolbelt==1.0.0 # langsmith dependency
+
+# OpenAI & Tokenizer
+openai==1.90.0
+tiktoken==0.9.0
+
+# External Tools/SDKs
+tavily-python==0.7.7
+wikipedia==1.4.0
+
+# HTTP Clients and Async Utilities
+aiohttp==3.12.13 # Langchain can use this
+aiosignal==1.3.2
+async-lru==2.0.5
+frozenlist==1.7.0
+multidict==6.5.0
+yarl==1.20.1
+anyio==4.9.0 # FastAPI/Starlette dependency
+httpx==0.28.1 # Used by OpenAI SDK, Langsmith, Langchain
+httpcore==1.0.9
+truststore==0.10.1 # httpx dependency for system trust stores
+sniffio==1.3.1
+sse-starlette==2.1.3 # For Server-Sent Events with FastAPI
+
+# Data Handling, Serialization, and Database
+python-dotenv==1.1.0 # For .env file loading
+orjson==3.10.18 # Fast JSON, Langchain/FastAPI can use
+ormsgpack==1.10.0 # msgpack alternative, Langchain dep
+cloudpickle==3.1.1 # Langchain dep for serialization
+pyyaml==6.0.2 # Langchain dep for YAML
+regex==2024.11.6 # Langchain dep
+sqlalchemy==2.0.41 # Langchain dep for DBs, some checkpointers
+aiosqlite==0.21.0 # For langgraph-checkpoint-sqlite
+tenacity==9.1.2 # Retrying, Langchain/OpenAI dep
+xxhash==3.5.0 # Langchain dep
+beautifulsoup4==4.13.4 # Langchain web loaders
+soupsieve==2.7 # beautifulsoup4 dep
+jsonschema==4.24.0 # For schema validation (Langchain tools, FastAPI extension)
+referencing==0.36.2
+rpds-py==0.25.1
+isoduration==20.11.0
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+uri-template==1.3.0
+fqdn==1.5.1
+webcolors==24.11.1
+sqlite-vec==0.1.6 # If using SQLite for vector search with Langchain
+
+# Core Utilities / Typing
+typing-extensions==4.14.0
+mypy-extensions==1.1.0 # Pydantic dependency
+packaging==24.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+attrs==25.3.0
+
+# Optional but good for APIs
+python-json-logger==3.3.0 # For structured logging (or structlog)
+cryptography==44.0.3 # Langsmith dep, also for JWTs or other security
+numpy==2.3.0 # Often a transitive dep for ML/data libs, Langchain might use
+pandas==2.3.0 # If complex data structures are passed or used internally
+pytz==2025.2 # pandas dep
+tzdata==2025.2 # pandas dep
+protobuf==6.31.1 # General dependency, ensure compatibility
+
+# For potential direct use if not covered by Langchain
+# pyarrow==20.0.0 (if direct Arrow usage is needed)
+# narwhals==1.43.1 (if using this PyArrow/Pandas interface)

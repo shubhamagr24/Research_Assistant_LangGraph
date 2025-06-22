@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app/api:/app/api # For live reload during development
+      - ./app:/app/app # For live reload during development
       - ./.env:/app/.env # Mount your .env file
     # environment: # Alternative to mounting .env file
     #   - OPENAI_API_KEY=${OPENAI_API_KEY}
