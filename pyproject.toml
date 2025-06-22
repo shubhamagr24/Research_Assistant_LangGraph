@@ -16,6 +16,7 @@ dependencies = [
     "langgraph-sdk>=0.1.70",
     "langsmith>=0.4.1",
     "notebook>=7.4.3",
+    "streamlit>=1.46.0",
     "tavily-python>=0.7.7",
     "trustcall>=0.0.26",
     "wikipedia>=1.4.0",
