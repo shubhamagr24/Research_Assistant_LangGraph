@@ -5,6 +5,8 @@ from langchain_community.tools import TavilySearchResults
 
 load_dotenv()
 
+max_interview_turns = 5   # Maximum number of turns in an interview
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
